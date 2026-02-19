@@ -46,10 +46,13 @@ The main difference here is that the home directory is not `/home` but `/cluster
 
 For HYway the standard command line is this
 ```shell
-apptainer exec --bind \ 
-/nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/MyPyaerocom.apptainer:/cluster/home/${USER}/MyPyaerocom \
---bind \
-/nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/pyaerocom_data:/lustre/storeB/project/aerocom/aerocom1 \
+apptainer exec \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/MyPyaerocom.apptainer:/cluster/home/${USER}/MyPyaerocom \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/pyaerocom_data:/lustre/storeB/project/aerocom/aerocom1 \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/aeroval_data:/cluster/home/${USER}/data/aeroval_data \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/aeroval_configs:/cluster/home/${USER}/data/aeroval_configs \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/aeroval_logs:/cluster/home/${USER}/data/aeroval_logs \
+--env "PYAEROCOM_LOG_FILE=cluster/home/${USER}/data/aeroval_logs/aerocom.log" \
 /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/bin/pyaerocom.sif \
 pya listcache
 ```
