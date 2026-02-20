@@ -5,6 +5,7 @@ Config file for AeroCom PhaseIII optical properties experiment
 """
 
 import os
+USER = os.getenv("USER")
 
 DB = {}
 
@@ -16,21 +17,33 @@ ALTITUDE_FILTER = {"altitude": [0, 1000]}
 
 # Setup for models used in analysis
 MODELS = {
-    # "SLSTR.ORAC": dict(
-    #     model_id="SLSTR_ORAC_v5.00.3A",
-    # ),
-    # "SLSTR.SDV": dict(
-    #     model_id="SLSTR_SDV.v2.30",
-    # ),
-    # "SLSTR.SU": dict(
-    #     model_id="SLSTR_SU_v1.14.1",
-    # ),
-    # "SLSTR.Ens": dict(
-    #     model_id="SLSTR_ensemble.v2.4",
-    # ),
-    "NorESM2.LM.C": dict(
-            model_id="NorESM2-LM-C",
-            model_data_dir="/lustre/storeB/project/aerocom/aerocom-users-database/HYway/NorESM2-LM-C/renamed/"
+    "EMAC-DLR": dict(
+            model_id="EMAC-DLR-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/EMAC-DLR-transient2010s/renamed/"
+        ),
+    "CESM2-v212": dict(
+            model_id="CESM2-v212-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/CESM2-v212-transient2010s/renamed/"
+        ),
+    "EC-Earth3-AerChem": dict(
+            model_id="EC-Earth3-AerChem-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/EC-Earth3-AerChem-transient2010s/renamed/"
+        ),
+    "LMDZ-INCA": dict(
+            model_id="LMDZ-INCA-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/LMDZ-INCA-transient2010s/renamed/"
+        ),
+    "NorESM2-LM-C": dict(
+            model_id="NorESM2-LM-C-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/NorESM2-LM-C-transient2010s/renamed/"
+        ),
+    "OsloCTM3v1-2": dict(
+            model_id="OsloCTM3v1-2-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/OsloCTM3v1-2-transient2010s/renamed/"
+        ),
+    "UKESM1-0-LL": dict(
+            model_id="UKESM1-0-LL-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/UKESM1-0-LL-transient2010s/renamed/"
         ),
 }
 
@@ -121,8 +134,8 @@ OBS_CFG = {**OBS_GROUNDBASED, **OBS_SAT}
 CFG = dict(
     model_cfg=MODELS,
     obs_cfg=OBS_CFG,
-    json_basedir=os.path.abspath("/home/jang/data/aeroval-local-web/data"),
-    coldata_basedir=os.path.abspath("/home/jang/data/aeroval-local-web/coldata"),
+    json_basedir=os.path.abspath(f"/nird/home/{USER}/container.data/aeroval_data/data"),
+    coldata_basedir=os.path.abspath(f"/nird/home/{USER}/container.data/aeroval_data/coldata"),
     # var_scale_colmap_file=os.path.abspath(
     #     "/home/jang/data/aeroval-local-web/pyaerocom-config/config_files/c3s2/var_scale_colmap.ini"),
     # io_aux_file=os.path.abspath(
@@ -131,7 +144,7 @@ CFG = dict(
     # if True, existing colocated data files will be deleted
     reanalyse_existing=True,
     only_json=False,
-    add_model_maps=False,
+    add_model_maps=True,
     only_model_maps=False,
     # maps_freq="yearly",
     plot_types=PLOT_TYPES,
@@ -153,7 +166,7 @@ CFG = dict(
     map_zoom="World",
     freqs=["monthly", "yearly"],
     # periods=['2020-2021', '2021'],
-    periods=["2019", ],
+    periods=["2010-2019", ],
     main_freq="monthly",
     # stats_main_freq = 'daily',
     zeros_to_nan=False,
@@ -167,12 +180,13 @@ CFG = dict(
     # regions_how='htap',
     regions_how="default",
     annual_stats_constrained=False,
-    proj_id="HYway",
-    exp_id="Fast_and_Simple",
-    exp_name="initial",
-    exp_descr=("initial 2d testing case."),
+    proj_id="HYwaySurface",
+    exp_id="transient2010s",
+    exp_name="transient2010s",
+    exp_descr=("Ground based evaluation of simulation one data of the HYway project."),
     exp_pi="Jan Griesfeller (jan.griesfeller@met.no)",
     public=True,
+    obs_cache_only=True,
     # directory where colocated data files are supposed to be stored
     weighted_stats=True,
     # start='2020-12-01',
@@ -195,9 +209,9 @@ if __name__ == "__main__":
 
     ana = ExperimentProcessor(stp)
     print(stp)
-    file = "./c3s3_fast_and_simple_cfg.json"
-    with open(file, "w") as fh:
-        json.dump(CFG, fh, indent=4)
+    # file = "./c3s3_fast_and_simple_cfg.json"
+    # with open(file, "w") as fh:
+    #     json.dump(CFG, fh, indent=4)
 
     # ana.exp_output.delete_experiment_data()
     # res=ana.exp_output._results_summary()

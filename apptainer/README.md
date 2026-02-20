@@ -39,7 +39,7 @@ apptainer exec --bind /lustre/storeB:/lustre/storeB --bind ~/MyPyaerocom.apptain
 apptainer exec --bind /lustre/storeB:/lustre/storeB --bind ~/MyPyaerocom.apptainer:/home/${USER}/MyPyaerocom ~/tmp/apptainer/pyaerocom.sif pya listcache
 ```
 
-## Running on nird
+## Running on betzy
 apptainer is only installed at the nird3 login node at the time of this writing (and on betzy)
 
 The main difference here is that the home directory is not `/home` but `/cluster/home`.
@@ -56,3 +56,34 @@ apptainer exec \
 /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/bin/pyaerocom.sif \
 pya listcache
 ```
+
+## Running on nird
+Because the kernels on the nird login nodes don't support fuse, recent apptainer versions will not work there.
+One has to use the older apptainer vesions name singularityu there. Singularity can be installed by ant user
+using mamba. `mamba install singularity` will install a working version.
+
+After that the `apptainer` command needs to be replaced by the `singularity` command and the different
+home path on nird needs to be adjusted to. 
+
+In order to use the provided config files in this repository, the following directories have to be created:
+
+```bash
+mkdir -p ~/container.data/aeroval_data ~/container.data/aeroval_configs ~/container.data/aeroval_logs
+```
+
+For HYway the standard command line is then this
+```shell
+singularity exec \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/MyPyaerocom.apptainer:/nird/home/${USER}/MyPyaerocom \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/pyaerocom_data:/lustre/storeB/project/aerocom/aerocom1 \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/aeroval_data:/nird/home/${USER}/container.data/aeroval_data \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/aeroval_configs:/nird/home/${USER}/container.data/aeroval_configs \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/aeroval_logs:/nird/home/${USER}/container.data/aeroval_logs \
+--env "PYAEROCOM_LOG_FILE=/nird/home/${USER}/container.data/aeroval_logs/aerocom.log" \
+/nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/bin/pyaerocom.sif \
+pya listcache
+```
+
+Note that the data will appear on the original file locations 
+(below `/nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/`). The directory structure `~/container.data` is only 
+used withing the container, but helps to create easily reusable aeroval config files.
