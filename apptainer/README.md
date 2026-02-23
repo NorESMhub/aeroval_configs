@@ -71,7 +71,7 @@ In order to use the provided config files in this repository, the following dire
 mkdir -p ~/container.data/aeroval_data ~/container.data/aeroval_configs ~/container.data/aeroval_logs
 ```
 
-For HYway the standard command line is then this
+For HYway the standard command line is then this (to see available cache files)
 ```shell
 singularity exec \
 --bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/MyPyaerocom.apptainer:/nird/home/${USER}/MyPyaerocom \
@@ -82,6 +82,20 @@ singularity exec \
 --env "PYAEROCOM_LOG_FILE=/nird/home/${USER}/container.data/aeroval_logs/aerocom.log" \
 /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/bin/pyaerocom.sif \
 pya listcache
+```
+
+To run the standard 2d analysis:
+
+```shell
+singularity exec \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/MyPyaerocom.apptainer:/nird/home/${USER}/MyPyaerocom \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/pyaerocom_data:/lustre/storeB/project/aerocom/aerocom1 \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/aeroval_data:/nird/home/${USER}/container.data/aeroval_data \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/aeroval_configs:/nird/home/${USER}/container.data/aeroval_configs \
+--bind /nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/aeroval_logs:/nird/home/${USER}/container.data/aeroval_logs \
+--env "PYAEROCOM_LOG_FILE=/nird/home/${USER}/container.data/aeroval_logs/aerocom.log" \
+/nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/bin/pyaerocom.sif \
+python /nird/home/${USER}/container.data/aeroval_configs/projects/HYway/cfg_HYway_2d.py
 ```
 
 Note that the data will appear on the original file locations 
