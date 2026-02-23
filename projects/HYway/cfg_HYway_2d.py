@@ -29,6 +29,14 @@ MODELS = {
             model_id="EMAC-DLR-transient2010s",
             model_data_dir="/lustre/storeB/project/aerocom/aerocom1/EMAC-DLR-transient2010s/renamed/"
         ),
+    "GFDL-AM4-1": dict(
+            model_id="GFDL-AM4-1-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/GFDL-AM4-1-transient2010s/renamed/"
+        ),
+    "GFDL-ESM4-c1": dict(
+        model_id="GFDL-ESM4-c1-transient2010s",
+        model_data_dir="/lustre/storeB/project/aerocom/aerocom1/GFDL-ESM4-c1-transient2010s/renamed/"
+    ),
     "LMDZ-INCA": dict(
             model_id="LMDZ-INCA-transient2010s",
             model_data_dir="/lustre/storeB/project/aerocom/aerocom1/LMDZ-INCA-transient2010s/renamed/"
@@ -217,7 +225,7 @@ if __name__ == "__main__":
     # ana.exp_output.delete_experiment_data()
     # res=ana.exp_output._results_summary()
     # ana.update_interface()
-    # ana.exp_output.delete_experiment_data()
+    ana.exp_output.delete_experiment_data()
 
     # data = ana.read_model_data('AEROCOM-MEDIAN', 'od550gt1aer')
     res = ana.run()
