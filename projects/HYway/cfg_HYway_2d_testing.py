@@ -17,42 +17,42 @@ ALTITUDE_FILTER = {"altitude": [0, 1000]}
 
 # Setup for models used in analysis
 MODELS = {
-    # "CESM2-v212": dict(
-    #         model_id="CESM2-v212-transient2010s",
-    #         model_data_dir="/lustre/storeB/project/aerocom/aerocom1/CESM2-v212-transient2010s/renamed/"
-    #     ),
-    # "EC-Earth3-AerChem": dict(
-    #         model_id="EC-Earth3-AerChem-transient2010s",
-    #         model_data_dir="/lustre/storeB/project/aerocom/aerocom1/EC-Earth3-AerChem-transient2010s/renamed/"
-    #     ),
-    # "EMAC-DLR": dict(
-    #         model_id="EMAC-DLR-transient2010s",
-    #         model_data_dir="/lustre/storeB/project/aerocom/aerocom1/EMAC-DLR-transient2010s/renamed/"
-    #     ),
-    "GFDL-AM4-1": dict(
-            model_id="GFDL-AM4-1-transient2010s",
-            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/GFDL-AM4-1-transient2010s/renamed/"
+    "CESM2-v212": dict(
+            model_id="CESM2-v212-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/CESM2-v212-transient2010s/renamed/"
         ),
-    "GFDL-ESM4-c1": dict(
-            model_id="GFDL-ESM4-c1-transient2010s",
-            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/GFDL-ESM4-c1-transient2010s/renamed/"
+    "EC-Earth3-AerChem": dict(
+            model_id="EC-Earth3-AerChem-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/EC-Earth3-AerChem-transient2010s/renamed/"
         ),
-    # "LMDZ-INCA": dict(
-    #         model_id="LMDZ-INCA-transient2010s",
-    #         model_data_dir="/lustre/storeB/project/aerocom/aerocom1/LMDZ-INCA-transient2010s/renamed/"
+    "EMAC-DLR": dict(
+            model_id="EMAC-DLR-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/EMAC-DLR-transient2010s/renamed/"
+        ),
+    # "GFDL-AM4-1": dict(
+    #         model_id="GFDL-AM4-1-transient2010s",
+    #         model_data_dir="/lustre/storeB/project/aerocom/aerocom1/GFDL-AM4-1-transient2010s/renamed/"
     #     ),
+    # "GFDL-ESM4-c1": dict(
+    #         model_id="GFDL-ESM4-c1-transient2010s",
+    #         model_data_dir="/lustre/storeB/project/aerocom/aerocom1/GFDL-ESM4-c1-transient2010s/renamed/"
+    #     ),
+    "LMDZ-INCA": dict(
+            model_id="LMDZ-INCA-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/LMDZ-INCA-transient2010s/renamed/"
+        ),
     "NorESM2-LM-C": dict(
             model_id="NorESM2-LM-C-transient2010s",
             model_data_dir="/lustre/storeB/project/aerocom/aerocom1/NorESM2-LM-C-transient2010s/renamed/"
         ),
-    # "OsloCTM3v1-2": dict(
-    #         model_id="OsloCTM3v1-2-transient2010s",
-    #         model_data_dir="/lustre/storeB/project/aerocom/aerocom1/OsloCTM3v1-2-transient2010s/renamed/"
-    #     ),
-    # "UKESM1-0-LL": dict(
-    #         model_id="UKESM1-0-LL-transient2010s",
-    #         model_data_dir="/lustre/storeB/project/aerocom/aerocom1/UKESM1-0-LL-transient2010s/renamed/"
-    #     ),
+    "OsloCTM3v1-2": dict(
+            model_id="OsloCTM3v1-2-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/OsloCTM3v1-2-transient2010s/renamed/"
+        ),
+    "UKESM1-0-LL": dict(
+            model_id="UKESM1-0-LL-transient2010s",
+            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/UKESM1-0-LL-transient2010s/renamed/"
+        ),
 }
 
 PLOT_TYPES = {}
@@ -116,13 +116,15 @@ OBS_GROUNDBASED = {
                 # "concpm25",
                 # "concSso2",
                 # "concNno2",
-                # "vmrco",
+                "vmrco",
+                "vmrno",
+                "vmrnh3",
                 # "vmro3max",
-                "vmro3",
+                # "vmro3",
                 # "concNno",
-                "concso4",
-                "vmrso2",
-                "vmrno2"
+                # "concso4",
+                # "vmrso2",
+                # "vmrno2"
             ],
             obs_vert_type="Surface",
             colocate_time=False,
@@ -206,7 +208,10 @@ CFG = dict(
         "od550dust",
         "ang4487aer",
         "vmrso2",
+        "vmrco",
+        "vmrno",
         "vmrno2",
+        "vmrnh3",
     ],
 )
 

@@ -29,10 +29,6 @@ MODELS = {
             model_id="EMAC-DLR-transient2010s",
             model_data_dir="/lustre/storeB/project/aerocom/aerocom1/EMAC-DLR-transient2010s/renamed/"
         ),
-    "GFDL-AM4-1": dict(
-            model_id="GFDL-AM4-1-transient2010s",
-            model_data_dir="/lustre/storeB/project/aerocom/aerocom1/GFDL-AM4-1-transient2010s/renamed/"
-        ),
     "GFDL-ESM4-c1": dict(
         model_id="GFDL-ESM4-c1-transient2010s",
         model_data_dir="/lustre/storeB/project/aerocom/aerocom1/GFDL-ESM4-c1-transient2010s/renamed/"
@@ -123,7 +119,10 @@ OBS_GROUNDBASED = {
                 # "concso4t",
                 "concso4",
                 "vmrso2",
+                "vmrco",
+                "vmrno",
                 "vmrno2",
+                "vmrnh3",
             ],
             obs_vert_type="Surface",
             colocate_time=False,
@@ -205,7 +204,11 @@ CFG = dict(
         "vmro3",
         "concso4",
         "vmrso2",
+        "vmrco",
+        "vmrno",
         "vmrno2",
+        "vmrnh3",
+
     ],
 )
 
