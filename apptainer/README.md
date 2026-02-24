@@ -101,3 +101,13 @@ python /nird/home/${USER}/container.data/aeroval_configs/projects/HYway/cfg_HYwa
 Note that the data will appear on the original file locations 
 (below `/nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/`). The directory structure `~/container.data` is only 
 used withing the container, but helps to create easily reusable aeroval config files.
+
+## Shell scripts for easier usage
+
+The `bin` directory contains a few shell scripts that make it easier to use pyaerocom in a containerised form.
+
+### RunHYwayAeroval.sh
+
+## Troubleshooting
+
+
