@@ -6,11 +6,11 @@ the Linux user-space mounting infrastructure `fuse` that apptainer is depending 
 containers are not officially supported by sigma2 on `nird`.
 
 ## Prerequests
-Note that `singularity` is the former name of `apptainer`. Besides some newer development, the both commands can be used interchangeably.
+Note that `singularity` is the former name of `apptainer`. Besides some newer developments, the both commands can be used interchangeably.
 
 - a working apptainer / singularity installation 
 - internet access
-- - access to dockerhub
+- access to dockerhub
 
 ## creating the pyaerocom container
 The apptainer definition file pyaerocom.def is supplied [here](./apptainer/pyaerocom.def) and is listed below:
