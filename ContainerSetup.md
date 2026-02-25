@@ -69,9 +69,8 @@ To make the documentation a bit simpler, we assume that the user is using the fo
 |${BaseDir}/aeroval_configs | /nird/home/${USER}/container.data/aeroval_configs |directory containing the aeroval config file | 
 |${BaseDir}/aeroval_logs    | /nird/home/${USER}/container.data/aeroval_logs| directory containing the pyaerocom log file | 
 
-Please note that directory structure /nird/home/${USER}/container.data/` has to exist since the container inherits the user's home directory.
-
-These can be easily created using the following command:
+Please note that directory structure `/nird/home/${USER}/container.data/` has to exist since the container inherits the user's home directory.
+They can be created using the following command:
 
 ```bash
 mkdir -p ~/container.data/aeroval_data ~/container.data/aeroval_configs ~/container.data/aeroval_logs
@@ -110,5 +109,5 @@ python /nird/home/${USER}/container.data/aeroval_configs/projects/HYway/cfg_HYwa
 
 Note that the data will appear on the original file locations 
 (below `/nird/datapeak/NS11106K/HYway/modelling_repository/pyaerocom/`). The directory structure `~/container.data` is only 
-used withing the container, but helps to create easily reusable aeroval config files.
+used within the container, but helps to create easily reusable aeroval config files.
 
